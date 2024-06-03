@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { Textarea } from '@/components/ui/textarea';
+import Image from 'next/image';
 
 import {
     Form,
