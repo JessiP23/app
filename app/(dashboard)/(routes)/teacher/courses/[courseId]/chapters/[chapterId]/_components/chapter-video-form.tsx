@@ -4,6 +4,7 @@ import * as z from 'zod';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import MuxPlayer from '@mux/mux-player-react';
 
 import { Button } from '@/components/ui/button';
 import { ImageIcon, Pencil, PlusCircle, Video } from 'lucide-react';
@@ -71,7 +72,9 @@ export const ChapterVideoForm =({
                     </div>
                 ) : (
                     <div className='relative aspect-video mt-2'>
-                        Video Uploaded!
+                        <MuxPlayer 
+                            playbackId={initialData?.muxData?.playbackId || ""}
+                        />
                     </div>
                 )
             )}
