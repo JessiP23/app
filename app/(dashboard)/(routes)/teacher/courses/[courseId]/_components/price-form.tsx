@@ -20,6 +20,7 @@ import toast from 'react-hot-toast';
 import { cn } from '@/lib/utils';
 import { Course } from '@prisma/client';
 import { Input } from '@/components/ui/input';
+import { formatPrice } from '@/lib/format';
 
 interface PriceFormProps {
     initialData: Course
@@ -78,7 +79,10 @@ export const PriceForm =({
                     "text-sm mt-2",
                     !initialData.price && "text-slate-500 italic"
                 )}>
-                    {initialData.price || "No price"}
+                    {initialData.price
+                     ? formatPrice(initialData.price)
+                     : "No price"
+                    }
                 </p>
             )}
             {isEditing && (
