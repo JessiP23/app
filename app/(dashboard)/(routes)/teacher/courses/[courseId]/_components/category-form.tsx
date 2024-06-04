@@ -20,6 +20,7 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { cn } from '@/lib/utils';
 import { Course } from '@prisma/client';
+import { Combobox } from '@/components/ui/combobox';
 
 interface CategoryFormProps {
     initialData: Course
@@ -34,8 +35,9 @@ const formSchema = z.object({
 export const CategoryForm =({
     initialData,
     courseId,
-    options
+    options,
 } : CategoryFormProps) => {
+    console.log('options:', options);
     const [isEditing, setIsEditing] = useState(false);
     const toggleEdit = () => setIsEditing((current) => !current);
     const router = useRouter();
@@ -60,10 +62,12 @@ export const CategoryForm =({
         }
     }
 
+    const selectedOption = options.find((option) => option.value === initialData.categoryId);
+
     return (
         <div className='mt-6 border bg-slate-100 rounded-md p-4'>
             <div className='font-medium flex items-center justify-between'>
-                Course Category
+                Course category
                 <Button onClick={toggleEdit} variant="ghost">
                     {isEditing ? (
                         <>Cancel</>
@@ -78,9 +82,9 @@ export const CategoryForm =({
             {!isEditing && (
                 <p className={cn(
                     "text-sm mt-2",
-                    !initialData.description && "text-slate-500 italic"
+                    !initialData.categoryId && "text-slate-500 italic"
                 )}>
-                    {initialData.description || "No Description"}
+                    {selectedOption?.label || "No category"}
                 </p>
             )}
             {isEditing && (
@@ -94,10 +98,10 @@ export const CategoryForm =({
                             render={({ field }) => (
                                 <FormItem>
                                     <FormControl>
-                                        <Textarea
-                                            disabled={isSubmitting} 
-                                            placeholder="e.g. 'This course is about...'"
-                                            {...field}
+                                        <Combobox
+                                            options={options}
+                                            value={field.value}
+                                            onChange={field.onChange}
                                         />
                                     </FormControl>
                                     <FormMessage />

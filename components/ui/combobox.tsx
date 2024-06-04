@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import * as React from "react"
 import { Check, ChevronsUpDown } from "lucide-react"
@@ -19,15 +19,15 @@ import {
 } from "@/components/ui/popover"
 
 interface ComboboxProps {
-    options: { label: string; value: string }[];
-    value?: string;
-    onChange: (value: string) => void;
-};
+  options: { label: string; value: string}[];
+  value?: string;
+  onChange: (value: string) => void;
+}
 
 export const Combobox = ({
-    options,
-    value,
-    onChange
+  options, 
+  value,
+  onChange
 }: ComboboxProps) => {
   const [open, setOpen] = React.useState(false)
 
@@ -41,7 +41,7 @@ export const Combobox = ({
           className="w-[200px] justify-between"
         >
           {value
-            ? options.find((option) => option.value === value)?.label
+            ? options.find((option) => option.value === value)?.label 
             : "Select option..."}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
@@ -49,7 +49,7 @@ export const Combobox = ({
       <PopoverContent className="w-[200px] p-0">
         <Command>
           <CommandInput placeholder="Search option..." />
-          <CommandEmpty>No option found.</CommandEmpty>
+          <CommandEmpty>No framework found.</CommandEmpty>
           <CommandGroup>
             {options.map((option) => (
               <CommandItem
