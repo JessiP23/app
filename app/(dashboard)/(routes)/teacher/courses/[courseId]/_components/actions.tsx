@@ -2,6 +2,7 @@
 
 import { ConfirmModal } from "@/components/modals/confirm-modal";
 import { Button } from "@/components/ui/button";
+import { useConfettiStore } from "@/hooks/use-confetti-store";
 import axios from "axios";
 import { Trash } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -21,6 +22,7 @@ export const Actions =({
     isPublished
 }: ActionsProps) => {
     const router = useRouter();
+    const confetti = useConfettiStore();
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -34,6 +36,7 @@ export const Actions =({
             } else {
                 await axios.patch(`/api/courses/${courseId}/chapters/publish`);
                 toast.success("Course Published");
+                confetti.onOpen();
             }
 
             router.refresh();
