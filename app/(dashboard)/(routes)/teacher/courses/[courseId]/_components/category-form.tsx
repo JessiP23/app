@@ -5,7 +5,6 @@ import axios from 'axios';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
-import { Textarea } from '@/components/ui/textarea';
 
 import {
     Form,
@@ -37,7 +36,6 @@ export const CategoryForm =({
     courseId,
     options,
 } : CategoryFormProps) => {
-    console.log('options:', options);
     const [isEditing, setIsEditing] = useState(false);
     const toggleEdit = () => setIsEditing((current) => !current);
     const router = useRouter();
