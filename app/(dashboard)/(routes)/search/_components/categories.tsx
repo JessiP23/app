@@ -29,7 +29,7 @@ export const Categories = ({
         "Computer Science": FcMultipleDevices,
         "Filming": FcFilmReel,
         "Engineering": FcEngineering,
-    }), []);
+    }), []); 
 
     return(
         <div className="flex items-center gap-x-2 overflow-x-auto pb-2">
