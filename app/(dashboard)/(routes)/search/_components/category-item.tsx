@@ -4,7 +4,6 @@ import qs from 'query-string';
 import { cn } from "@/lib/utils";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { IconType } from "react-icons/lib";
-import path from 'path';
 
 interface CategoryItemProps {
     label: string;
@@ -48,7 +47,7 @@ export const CategoryItem =({
         >
             {Icon && <Icon size={20} />}
             <div className="truncate">
-                {label}
+                {label} 
             </div>
         </button>
     )

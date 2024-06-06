@@ -11,7 +11,7 @@ import {
     FormControl,
     FormField,
     FormItem,
-    FormMessage,
+    FormMessage, 
 } from '@/components/ui/form';
  import { Button } from '@/components/ui/button';
 import { Pencil } from 'lucide-react';
@@ -22,7 +22,7 @@ import { Course } from '@prisma/client';
 import { Combobox } from '@/components/ui/combobox';
 
 interface CategoryFormProps {
-    initialData: Course
+    initialData: Course;
     courseId: string;
     options: { label: string; value: string }[];
 };
@@ -43,7 +43,7 @@ export const CategoryForm =({
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            categoryId: initialData?.categoryId || ""
+            categoryId: initialData?.categoryId || "",
         },
     });
 

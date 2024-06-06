@@ -90,7 +90,7 @@ const CreatePage = () => {
                                     variant="ghost"
                                 >
                                     Cancel
-                                </Button>
+                                </Button> 
                             </Link>
                             <Button
                                 type='submit'
