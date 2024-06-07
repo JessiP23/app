@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/form';
  import { Button } from '@/components/ui/button';
 import { Pencil } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import toast from 'react-hot-toast';
 import { cn } from '@/lib/utils';
 import { Course } from '@prisma/client';
@@ -24,7 +24,7 @@ import { Combobox } from '@/components/ui/combobox';
 interface CategoryFormProps {
     initialData: Course;
     courseId: string;
-    options: { label: string; value: string }[];
+    options: { label: string; value: string; }[];
 };
 
 const formSchema = z.object({
@@ -89,6 +89,7 @@ export const CategoryForm =({
                 <Form {...form}>
                     <form
                         onSubmit={form.handleSubmit(onSubmit)}
+                        className='space-y-4 mt-4'
                     >
                         <FormField
                             control={form.control}
@@ -97,9 +98,9 @@ export const CategoryForm =({
                                 <FormItem>
                                     <FormControl>
                                         <Combobox
+                                            key={options.map((option) => option.value).join()}
                                             options={options}
-                                            value={field.value}
-                                            onChange={field.onChange}
+                                            {...field}
                                         />
                                     </FormControl>
                                     <FormMessage />

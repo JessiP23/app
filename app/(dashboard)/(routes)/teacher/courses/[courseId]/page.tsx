@@ -49,13 +49,6 @@ const CourseIdPage = async ({
         },
     });
 
-    console.log("This is the categories",categories);
-
-    console.log(categories.map((category) => ({
-        label: category.name,
-        value: category.id,
-    })));
-
     if (!course) {
         return redirect("/");
     }

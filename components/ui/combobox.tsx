@@ -30,8 +30,6 @@ export const Combobox = ({
 }: ComboboxProps) => {
     const [open, setOpen] = React.useState(false);
 
-    console.log('Combobox options:', options); // Debugging line
-
     return (
         <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>
@@ -55,7 +53,6 @@ export const Combobox = ({
                         {options.map((option) => (
                             <CommandItem
                                 key={option.value}
-                                value={option.value}
                                 onSelect={() => {
                                     onChange(option.value === value ? "" : option.value);
                                     setOpen(false);
