@@ -94,7 +94,7 @@ export async function PATCH(
     req: Request,
     { params }: {params: {courseId: string; chapterId: string}}
 ) {
-    try {
+    try { 
         const { userId } = auth();
         const { isPublished, ...values } = await req.json();
 

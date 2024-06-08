@@ -31,10 +31,10 @@ export const Actions =({
             setIsLoading(true);
 
             if (isPublished) {
-                await axios.patch(`/api/courses/${courseId}/chapters/unpublish`);
+                await axios.patch(`/api/courses/${courseId}/unpublish`);
                 toast.success("Course Unpublished");
             } else {
-                await axios.patch(`/api/courses/${courseId}/chapters/publish`);
+                await axios.patch(`/api/courses/${courseId}/publish`);
                 toast.success("Course Published");
                 confetti.onOpen();
             }
@@ -52,7 +52,7 @@ export const Actions =({
             setIsLoading(true);
             await axios.delete(`/api/courses/${courseId}`);
 
-            toast.success("Chapter deleted");
+            toast.success("Course deleted");
             router.refresh();
             router.push(`/teacher/courses`);
 

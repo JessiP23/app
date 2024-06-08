@@ -1,7 +1,6 @@
 import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
-import { ostring } from "zod";
 
 export async function PATCH (
     req: Request,

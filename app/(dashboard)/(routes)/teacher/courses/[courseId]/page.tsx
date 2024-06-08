@@ -58,8 +58,8 @@ const CourseIdPage = async ({
         course.title,
         course.description,
         course.imageUrl,
-        course.categoryId,
         course.price,
+        course.categoryId,
         course.chapters.some(chapter => chapter.isPublished),
     ];
 
