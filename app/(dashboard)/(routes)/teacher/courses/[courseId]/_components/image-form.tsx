@@ -21,23 +21,24 @@ const formSchema = z.object({
     imageUrl: z.string().min(1, {
         message: "Image is required",
     }),
-}) ;
+});
 
-export const ImageForm =({
+export const ImageForm = ({
     initialData,
     courseId
-} : ImageFormProps) => {
+}: ImageFormProps) => {
     const [isEditing, setIsEditing] = useState(false);
     const toggleEdit = () => setIsEditing((current) => !current);
     const router = useRouter();
 
-    const onSubmit = async(values: z.infer<typeof formSchema>) => {
+    const onSubmit = async (values: z.infer<typeof formSchema>) => {
         try {
             await axios.patch(`/api/courses/${courseId}`, values);
             toast.success("Course updated");
             toggleEdit();
             router.refresh();
-        } catch{
+        } catch (error) {
+            console.error('Error updating course:', error);
             toast.error('Something went wrong');
         }
     }
@@ -59,7 +60,7 @@ export const ImageForm =({
                     {!isEditing && initialData.imageUrl && (
                         <>
                             <Pencil className='h-4 w-4 mr-2' />
-                            Edit Image 
+                            Edit Image
                         </>
                     )}
                 </Button>
@@ -76,6 +77,8 @@ export const ImageForm =({
                             fill
                             className="object-cover rounded-md"
                             src={initialData.imageUrl}
+                            sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            priority
                         />
                     </div>
                 )
