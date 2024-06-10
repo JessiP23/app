@@ -10,6 +10,10 @@ import { File } from "lucide-react";
 import { CourseProgress } from "@/components/course-progress";
 import { CourseProgressButton } from "./_components/course-progress-button";
 
+interface NextChapter {
+    id: string;
+}
+
 const ChapterIdPage = async ({
     params,
 }: {
