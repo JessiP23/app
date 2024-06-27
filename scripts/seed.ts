@@ -4,6 +4,7 @@ const database = new PrismaClient();
 
 async function main() {
     try{
+        // settings or categories for the database in mongo and prisma
         await database.category.createMany({ 
             data: [ 
                 {name: "Computer Science"},
