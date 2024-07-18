@@ -6,7 +6,7 @@ export const Logo = () => {
             height={130}
             width={130}
             alt='logo'
-            src="/logo.svg"
+            src="/angellist-svgrepo-com.svg"
         />
     )
 }
